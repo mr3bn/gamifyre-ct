@@ -52,7 +52,7 @@ Activity creators can:
 ## Person
 ```json
     {
-        "id": "string",
+        "uname": "string",
         "fname": "string",
         "lname": "string",
         "teams": [],
