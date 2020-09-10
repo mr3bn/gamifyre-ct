@@ -6,7 +6,6 @@ import logging
 import os
 
 import azure.functions as func
-from bson.dbref import DBRef
 from bson.objectid import ObjectId
 
 from __app__.shared.constants import env as env_constants
@@ -35,7 +34,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(status_code=200)
 
 def process_request(req: func.HttpRequest):
-    """Pulls and returns required query parameters from an incoming func.HttpRequest"""
+    """Pulls and returns query params named personId and challengeId from an incoming func.HttpRequest"""
 
     person_id = req.params.get('personId')
     challenge_id = req.params.get('challengeId')
