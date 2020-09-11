@@ -1,24 +1,24 @@
+"""
+Azure function module to create a new document in the "Activity" collection.
+"""
+
+import json
+import os
+
 import logging
 
 import azure.functions as func
 
+from __app__.shared.constants import mongo as mongo_constants
+from __app__.shared.constants import env as env_constants
+from __app__.shared.mongo_wrapper import get_client, insert_one
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+def main(req: func.HttpRequest):
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+    activity = req.get_json()
 
-    if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-    else:
-        return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-             status_code=200
-        )
+    client = get_client(os.environ[env_constants.MONGO_CONNECTION_STRING])
+
+    insert_one(client, mongo_constants.GAMIFYRE_DB, mongo_constants.collections.ACTIVITY, activity)
+
+    return func.HttpResponse(status_code=200)
