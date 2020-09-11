@@ -4,16 +4,16 @@
 * Create User
 * Get All Users (Nested **Get User**)
 * Get User
- * Completed Activities
- * Enrolled Challenges
+  * Completed Activities
+  * Enrolled Challenges
 
 ## Challenge
 * Create Challenge
 * Get All Challenges
 * Get Challenge
- * Challenge Data
- * Activities
- * Users Enrolled
+  * Challenge Data
+  * Activities
+  * Users Enrolled
 * Update Challenge Settings
 
 ## Activity
@@ -24,6 +24,6 @@
 * Create Team
 * Get All Teams (Nested **Get Team**)
 * Get Team
- * Members
- * Completed Activities
- * Enrolled Challenges
+  * Members
+  * Completed Activities
+  * Enrolled Challenges
