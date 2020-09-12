@@ -6,6 +6,7 @@
 * Get User
   * Completed Activities
   * Enrolled Challenges
+* Enroll in Challenge
 
 ## Challenge
 * Create Challenge
@@ -19,6 +20,7 @@
 ## Activity
 * Get All Activities
 * Get Activities for a Specified Challenge (???)
+* Record Activity
 
 ## Team
 * Create Team
