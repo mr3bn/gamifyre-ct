@@ -13,14 +13,20 @@ from __app__.shared.mongo_wrapper import get_client, insert_one
 
 def main(req: func.HttpRequest):
 
-    person = req.get_json()
+    team = req.get_json()
 
-    person['teams'] = []
-    person['challenges'] = []
-    person['activities'] = []
+    if 'members' not in team.keys():
+        team["members"] = [team["owner_id"]]
+
+    if 'challeneges' not in team.keys():
+        team["challenges"] = []
+
+    if 'activities' not in team.keys():
+        team["activities"] = []
+
 
     client = get_client(os.environ[env_constants.MONGO_CONNECTION_STRING])
 
-    insert_one(client, mongo_constants.GAMIFYRE_DB, mongo_constants.collections.PERSON, person)
+    insert_one(client, mongo_constants.GAMIFYRE_DB, mongo_constants.collections.TEAM, team)
 
     return func.HttpResponse(status_code=200)
